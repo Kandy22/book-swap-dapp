@@ -100,6 +100,7 @@ function Navbar({
                   <Button
                     variant="contained"
                     color="secondary"
+                    style={{ backgroundColor: '#03ad03' }}
                     endIcon={<VerifiedUserSharpIcon />}
                   >
                     {currentAccount.substring(0, 8)}...
@@ -117,7 +118,8 @@ function Navbar({
                 <>
                   <Button
                     variant="contained"
-                    className="connect-wallet-btn"
+                    color="primary"
+                    style={{ backgroundColor: '#03ad03' }}
                     onClick={onClickConnect}
                   >
                     Connect Wallet

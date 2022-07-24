@@ -1,19 +1,10 @@
 import React from 'react'
 import './Apartment.css'
 import TabsNabvar from './TabsNabvar'
-import XmtpChat from '../xmtp-chat/XmtpChat'
 import CovalentGetNfts from '../covalent-get-nfts/CovalentGetNfts'
-import apt from './apt.png'
+import Reviews from '../reviews/Reviews'
 import { useNavigate } from 'react-router-dom'
-import {
-  Container,
-  StylesProvider,
-  Typography,
-  Button,
-  ImageListItem,
-  Grid,
-  Box,
-} from '@material-ui/core'
+import { Button } from '@material-ui/core'
 
 function Apartment({ currentApt, signer, currentAccount }) {
   console.log('in Apartment Cmp', currentApt)
@@ -52,7 +43,6 @@ function Apartment({ currentApt, signer, currentAccount }) {
                 <i className="fa fa-star rating-color"></i>
                 <i className="fa fa-star"></i>
               </div>
-              <p className="">12 Reviews</p>
             </div>
             <p>
               <i class="fa fa-check-square"></i> {currentApt.status} is the
@@ -82,6 +72,8 @@ function Apartment({ currentApt, signer, currentAccount }) {
               </a>
             </p>
             <p> Description: {currentApt.info}</p>
+
+            <br />
             <Button
               variant="contained"
               color="secondary"
@@ -101,12 +93,13 @@ function Apartment({ currentApt, signer, currentAccount }) {
             </Button>
           </div>
         </div>
+        <br />
+        <br />
+
+        <Reviews />
       </div>
 
       <CovalentGetNfts />
-
-      {/*TABS  */}
-      <TabsNabvar />
     </div>
   )
 }

@@ -8,7 +8,6 @@ import Reviews from '../reviews/Reviews'
 import PriceHistory from '../price-history/PriceHistory'
 
 class TabsNabvar extends Component {
-
   async componentWillMount() {
     // await this.loadBlockchainData(this.props.dispatch)
   }
@@ -88,7 +87,6 @@ class TabsNabvar extends Component {
   //   }
   // }
 
-
   constructor(props) {
     super(props)
     this.state = {
@@ -111,7 +109,6 @@ class TabsNabvar extends Component {
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
-
 
   async handleSubmit(event) {
     event.preventDefault()
@@ -173,7 +170,9 @@ class TabsNabvar extends Component {
                           className="form-group"
                           style={{ textAlign: 'left' }}
                         >
-                          <label htmlFor="formGroupExampleInput">Description</label>
+                          <label htmlFor="formGroupExampleInput">
+                            Description
+                          </label>
                           <input
                             onChange={this.handleChange}
                             type="text"
