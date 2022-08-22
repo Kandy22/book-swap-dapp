@@ -5,6 +5,7 @@ import UAuth from '@uauth/js'
 import Web3Modal from 'web3modal'
 import Button from '@material-ui/core/Button'
 import VerifiedUserSharpIcon from '@material-ui/icons/VerifiedUserSharp'
+import { sequence } from '0xsequence'
 
 function Navbar({
   currentAccount,
@@ -23,6 +24,17 @@ function Navbar({
     clientID: '69c407cc-4663-48af-af8a-4f90592ba307',
     redirectUri: 'http://localhost:3000',
   })
+
+  const loginSequence = async (e) => {
+    const wallet = await sequence.initWallet('mumbai', {
+      networkRpcUrl: 'https://matic-mumbai.chainstacklabs.com',
+    })
+
+    // const wallet = await sequence.initWallet('polygon')
+    const connectDetails = await wallet.connect()
+    console.log('=> connected?', connectDetails.connected)
+  }
+
   const loginUD = async (e) => {
     e.preventDefault()
     try {
@@ -82,37 +94,52 @@ function Navbar({
             </div>
 
             <div className="d-flex ms-auto">
-              {sequenceWallet ? (
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  endIcon={<VerifiedUserSharpIcon />}
-                >
-                  {sequenceWallet.substring(0, 8)}...
-                  {sequenceWallet.substring(38)}
-                </Button>
-              ) : (
-                ''
-              )}
-
-              {currentAccount ? (
+              {sequenceWallet || currentAccount ? (
                 <>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    style={{ backgroundColor: '#03ad03' }}
-                    endIcon={<VerifiedUserSharpIcon />}
-                  >
-                    {currentAccount.substring(0, 8)}...
-                    {currentAccount.substring(38)}
-                  </Button>
-                  <Button
-                    style={{ color: 'white' }}
-                    to="/"
-                    onClick={onClickDisconnect}
-                  >
-                    Logout
-                  </Button>
+                  {sequenceWallet ? (
+                    <>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        endIcon={<VerifiedUserSharpIcon />}
+                      >
+                        {sequenceWallet.substring(0, 8)}...
+                        {sequenceWallet.substring(38)}
+                      </Button>
+                      <Button
+                        style={{ color: 'white' }}
+                        to="/"
+                        onClick={onClickDisconnect}
+                      >
+                        Logout
+                      </Button>
+                    </>
+                  ) : (
+                    ''
+                  )}
+
+                  {currentAccount ? (
+                    <>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        style={{ backgroundColor: '#03ad03' }}
+                        endIcon={<VerifiedUserSharpIcon />}
+                      >
+                        {currentAccount.substring(0, 8)}...
+                        {currentAccount.substring(38)}
+                      </Button>
+                      <Button
+                        style={{ color: 'white' }}
+                        to="/"
+                        onClick={onClickDisconnect}
+                      >
+                        Logout
+                      </Button>
+                    </>
+                  ) : (
+                    ''
+                  )}
                 </>
               ) : (
                 <>
@@ -124,6 +151,14 @@ function Navbar({
                   >
                     Connect Wallet
                   </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ backgroundColor: 'rgb(255 0 0)' }}
+                    onClick={connectSequence}
+                  >
+                    Connect with Sequence
+                  </Button>
                 </>
               )}
             </div>
@@ -133,9 +168,8 @@ function Navbar({
       <div>
         {currentAccount ? (
           <div className="display-flex">
-            <p>
-              <strong>Your balance is:</strong> {balance}
-            </p>
+            <p>Welcome back 🤗 </p>
+            <p>Your balance is: {balance}</p>
           </div>
         ) : (
           <></>

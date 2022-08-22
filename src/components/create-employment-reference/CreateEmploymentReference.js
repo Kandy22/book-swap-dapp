@@ -192,9 +192,9 @@ export default function CreateEmploymentReference() {
           <button
             onClick={initializedTableLand}
             type="button"
-            className="btn btn-lg btn-info"
+            className="btn btn-lg btn-success"
           >
-            To Continue Connect TableLand
+            Please Connect TableLand ➡
           </button>
         )}
       </div>

@@ -23,7 +23,7 @@ function Companies({ setCurrentApt, currentAccount }) {
     const loadsData = async () => {
       try {
         setLoading(true)
-        let cids = await fetch('https://api.nft.storage', {
+        let cids = await fetch('https://api.nft.storage?limit=100', {
           headers: {
             Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',

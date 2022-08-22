@@ -18,12 +18,10 @@ function AwardNfts() {
   const [image, setImage] = useState('')
   const [response, setResponse] = useState('')
 
-  const [tenantName, setTenantName] = useState('Metaverse4life.eth')
-  const [description, setDescription] = useState(
-    'This tenant always paid on time. She was always clean. I definitely reccomend her for with this NFT landloard  referral for being a great tenant!',
-  )
+  const [tenantName, setTenantName] = useState('')
+  const [description, setDescription] = useState('')
   let [mintAddress, setMintAddress] = useState(
-    '0xf4eA652F5B7b55f1493631Ea4aFAA63Fe0acc27C',
+    '0x11760DB13aE3Aa5Bca17fC7D62172be2A2Ea9C11',
   )
   const file_url =
     'https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
@@ -34,19 +32,13 @@ function AwardNfts() {
   const nftPortFunc = (e) => {
     e.preventDefault()
 
-    // const att = {
-    //   name: ""
-    // }
-
     fetch('https://api.nftport.xyz/v0/mints/easy/urls', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: '5aca4bfa-4460-4000-ada2-dfe2b88831e8',
       },
-      body: `{"chain":"polygon","name":"Campbell Biology (Campbell Biology Series)","description":"This book is about the world  in which the author presented his famous paradox and argued his thesis that mathematics and logic are identical.","file_url":"https://images.unsplash.com/photo-1476041026529-411f6ae1de3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80","mint_to_address":"0x11760DB13aE3Aa5Bca17fC7D62172be2A2Ea9C11"}`,
-      // body: `{"chain":"polygon","name":"Principles of Math","description":"This book is about in which the author presented his famous paradox and argued his thesis that mathematics and logic are identical.","file_url":"https://images.unsplash.com/photo-1518281420975-50db6e5d0a97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80","mint_to_address":"0x11760DB13aE3Aa5Bca17fC7D62172be2A2Ea9C11"}`,
-      // body: `{"chain":"polygon","name":${tenantName},"description":"Mydescription","file_url":${file_url},"mint_to_address":${mintAddress}}`,
+      body: `{"chain":"polygon","name":"Campbell Biology (Campbell Biology Series)","description":"This book is about the world  in which the author presented his famous paradox and argued his thesis that mathematics and logic are identical.","file_url":"https://images.unsplash.com/photo-1604351888999-9ea0a2851e61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80","mint_to_address":"0x11760DB13aE3Aa5Bca17fC7D62172be2A2Ea9C11"}`,
     })
       .then((response) => {
         console.log(response)
@@ -89,7 +81,7 @@ function AwardNfts() {
           name: tenantName,
           description: description,
           mint_to_address: mintAddress,
-          msg: 'This is a NFT landloard  referral for being a great tenant!',
+          msg: 'This is a NFT landloard  referral for being a great user!',
         }),
       options,
     ).then(function (responseJson) {
@@ -149,7 +141,6 @@ function AwardNfts() {
             Donate NFTs
           </Typography>
 
-          {/* Add Form */}
           {image ? (
             <img
               src={URL.createObjectURL(image)}
@@ -209,7 +200,7 @@ function AwardNfts() {
                 </IconButton>
               </label>
 
-              <Button size="large" variant="contained" color="primary">
+              <Button size="large" variant="contained" color="secondary">
                 Upload & Submit
               </Button>
             </form>

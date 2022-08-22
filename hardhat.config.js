@@ -23,12 +23,40 @@ module.exports = {
       // chainId: 1337, //matic
       chainId: 0x40b9020d, //skale
     },
+    alfajores: {
+      url: 'https://alfajores-forno.celo-testnet.org',
+      accounts: [
+        'a94b13a69756cb84833978359e6eae91cde82135a7501444f3989b4b6b4cea1d',
+      ],
+      chainId: 44787,
+    },
+    'gnosis-test': {
+      url: 'https://rpc.ankr.com/gnosis',
+      accounts: [
+        'a94b13a69756cb84833978359e6eae91cde82135a7501444f3989b4b6b4cea1d',
+      ],
+    },
+    gnosis: {
+      url: 'https://rpc.ankr.com/gnosis',
+      accounts: [
+        'a94b13a69756cb84833978359e6eae91cde82135a7501444f3989b4b6b4cea1d',
+      ],
+      chainId: 100,
+    },
+    xdai: {
+      url: 'https://rpc.gnosischain.com',
+      accounts: [
+        'a94b13a69756cb84833978359e6eae91cde82135a7501444f3989b4b6b4cea1d',
+      ],
+      chainId: 100,
+    },
     matic: {
       url: 'https://rpc-mumbai.maticvigil.com',
       accounts: [
         'a94b13a69756cb84833978359e6eae91cde82135a7501444f3989b4b6b4cea1d',
       ],
     },
+
     skale: {
       url: 'https://hackathon.skalenodes.com/v1/downright-royal-saiph',
       accounts: [

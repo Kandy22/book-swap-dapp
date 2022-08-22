@@ -72,6 +72,8 @@ function App() {
     setProviderSave(provider)
     const { chainId } = await provider.getNetwork()
     console.log('chainId', chainId)
+    const deployedAlfajoresContract =
+      '0x16d7be29ebc6db2e9c92E0Bf1dE5c1cfe6b1AD2a'
     const deployedMaticContract = '0xA266e466FbAF783006758Ee7b5d91ec1E121233C'
     const deployedSkaleContract =
       '0x16d7be29ebc6db2e9c92E0Bf1dE5c1cfe6b1ADsdd2a'
@@ -83,16 +85,21 @@ function App() {
     let contract = new ethers.Contract(deployedOptimismContract, ABI, signer)
     setContract(contract)
 
-    // if (chainId == '1085866509') {
-    //   let contract = new ethers.Contract(deployedSkaleContract, ABI, signer)
-    //   setContract(contract)
-    // } else if (chainId == '80001') {
-    //   let contract = new ethers.Contract(deployedMaticContract, ABI, signer)
-    //   setContract(contract)
-    // } else if (chainId == '69') {
-    //   let contract = new ethers.Contract(deployedOptimismContract, ABI, signer)
-    //   setContract(contract)
-    // }
+    if (chainId == '1085866509') {
+      let contract = new ethers.Contract(deployedSkaleContract, ABI, signer)
+      setContract(contract)
+    } else if (chainId == '80001') {
+      let contract = new ethers.Contract(deployedMaticContract, ABI, signer)
+      setContract(contract)
+    } else if (chainId == '69') {
+      let contract = new ethers.Contract(deployedOptimismContract, ABI, signer)
+      setContract(contract)
+    } else if (chainId == '44787') {
+      let contract = new ethers.Contract(deployedAlfajoresContract, ABI, signer)
+      console.log('Alfajores Alfajores Alfajores')
+
+      setContract(contract)
+    }
     // MetaMask requires requesting permission to connect users accounts
     provider
       .send('eth_requestAccounts', [])

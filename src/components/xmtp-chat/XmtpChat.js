@@ -12,16 +12,10 @@ export default function XmtpChat({ signer, currentAccount, currentApt }) {
   const [message, setMessage] = useState('')
   const [xmtpconnection, setXmtpconnection] = useState('')
   const [chatMessages, setChatMessages] = useState('')
-  const [buyerInput, setBuyerInput] = useState(' ')
-  const sender = '0x11Afb8521CbF03C3508378E41d4C5b7e2C90b233'
 
-  const writeToTableLand = async () => {
-    //  wallet: 0001
-    //  tableId: tableland+number:
-    //  we save it on the contract
-    //   table:
-    // tableId: userWallet
-  }
+  const [buyerInput, setBuyerInput] = useState('')
+  const [inputText, setInputText] = useState('')
+  const sender = '0x11Afb8521CbF03C3508378E41d4C5b7e2C90b233'
 
   const date = new Date().toJSON().slice(0, 10).split('-').reverse().join('-')
   useEffect(() => {
@@ -60,7 +54,7 @@ export default function XmtpChat({ signer, currentAccount, currentApt }) {
     const send = await conversation.send(message)
     const messages = await conversation.messages()
     console.log('🚀messages', messages)
-    setBuyerInput(message)
+    setBuyerInput(inputText)
   }
 
   const you = (
@@ -136,7 +130,6 @@ export default function XmtpChat({ signer, currentAccount, currentApt }) {
                       <div class="left-body-container">
                         {you}
                         {buyerInput ? youSecond : ''}
-
                         <br />
                         {currentAccount ===
                         '0x11afb8521cbf03c3508378e41d4c5b7e2c90b233'
@@ -161,10 +154,10 @@ export default function XmtpChat({ signer, currentAccount, currentApt }) {
                                 <input
                                   type="text"
                                   placeholder="Your message"
-                                  defaultValue={message}
+                                  defaultValue={inputText}
                                   className="form-control"
                                   id="message"
-                                  onChange={(e) => setMessage(e.target.value)}
+                                  onChange={(e) => setInputText(e.target.value)}
                                 />
                               </div>
                             </div>
@@ -208,8 +201,13 @@ export default function XmtpChat({ signer, currentAccount, currentApt }) {
           </div>
         </div>
       ) : (
-        <Button variant="contained" color="primary" onClick={connectXmtpClient}>
-          Connect to Xmtp Client
+        <Button
+          variant="contained"
+          color="success"
+          onClick={connectXmtpClient}
+          className="btn btn-lg"
+        >
+          Connect to Xmtp SDK
         </Button>
       )}
     </div>
